@@ -1,0 +1,75 @@
+<html>
+<head></head>
+<style>
+
+</style>
+
+<script>
+	
+	
+	document.onkeydown = checkKey;
+	
+	var i=localStorage.getItem("keys");
+	var s=0;
+	var t=localStorage.getItem("time");
+	
+	function checkKey(e){
+		e = e || window.event;
+		if(e.keyCode = NaN){
+			disableBtn();
+		}
+		
+		if(e.keyCode == '38'){
+			document.getElementById("c1").innerHTML = ++i;
+			enableBtn();
+			if (s!=1){
+				timer();}
+				s=1;
+			
+			
+			
+			
+		}
+		
+		
+	
+	}
+	function enableBtn() {
+    document.getElementById("myBtn").disabled = false;
+} 
+	function disableBtn() {
+    document.getElementById("myBtn").disabled = true;
+    }
+    
+    	function timer() {
+    	
+  setInterval(function(){ document.getElementById("t").innerHTML =++t + "s"; }, 1000);
+}
+	function btnClick() {
+	
+    localStorage.setItem("time",t);
+    localStorage.setItem("keys",i);
+    document.getElementById("c2").innerHTML = i;
+    document.getElementById("myBtn").disabled=true;
+    avg();
+    
+ 
+}
+	function avg() {
+		document.getElementById("avg").innerHTML = (i/t)+ "per second"; 
+	}
+	
+    
+    </script>
+<body>
+<center>
+<div>Time:- <p id="t">0</p></div>
+<div>Counter 1 => <p id="c1">0</p></div><br><div>Counter 2 <p id="c2">0</p></div>
+<button id="myBtn" disabled onclick="btnClick()"> Done With Session </button>
+
+<div><p id="avg"></p></div>
+
+
+</body>
+
+</html>
